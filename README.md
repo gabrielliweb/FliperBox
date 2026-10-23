@@ -14,6 +14,9 @@ Rede social de reviews de jogos, inspirada no Letterboxd e no clima dos fliperam
 - **Perfil:** Top 4 jogos favoritos e lista das próprias reviews.
 - **Listas:** criação de listas personalizadas, exibidas em mosaico com até 4 capas levemente sobrepostas, título e quantidade de jogos. É possível adicionar e remover jogos e excluir a lista.
 - **Notícias:** coluna lateral com novidades do mundo dos games (hoje são textos de exemplo).
+- **Filtro de gênero:** seletor compacto com pílula do filtro ativo, combinado com a busca por nome.
+- **Perfil estilo Letterboxd:** avatar editável, bio, localização, contadores, Top 4, gráfico de estrelas, diário e watchlist.
+- **Rede social simulada:** seguir usuários, curtir e comentar reviews, feed "Seguindo" e "Em Alta".
 
 ## Tecnologias
 
@@ -55,7 +58,7 @@ Títulos e logo usam a fonte *Press Start 2P* (Google Fonts). Sem internet, o na
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/SEU-USUARIO/fliperbox.git
+   git clone https://github.com/gabrielliweb/fliperbox.git
    ```
 2. Abra a pasta no VS Code e use a extensão **Live Server** em `index.html`, ou rode:
    ```bash
@@ -101,6 +104,7 @@ Se uma imagem não carregar, o card mostra o título do jogo no lugar.
 
 | Versão | Novidades |
 |---|---|
+| **v4** | Filtro de gênero compacto; perfil estilo Letterboxd com gráfico de estrelas e watchlist; curtidas, comentários e seguidores |
 | **v3 – FliperBox** | Novo nome e paleta Vintage Arcade; cabeçalho com busca, links e perfil do usuário; feed com usuários simulados e abas Todos/Minhas; catálogo com clássicos e modernos; login por e-mail |
 | **v2** | Pôsteres 2:3 com modal de avaliação; página Atividade; notícias; listas em mosaico |
 | **v1 – MVP** | Cadastro/login simulados, reviews, Top 4, catálogo e listas |
