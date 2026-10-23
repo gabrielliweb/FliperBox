@@ -5,7 +5,7 @@ let filter = "all";
 function renderFeed() {
 const list = Reviews.all()
     .filter((r) => filter === "all" || r.user === user)
-    .sort((a, b) => new Date(b.date) - new Date(a.date)); // mais recentes primeiro
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 
     feed.innerHTML = list.length
     ? list.map((r) => feedItem(r, r.user === user)).join("")
