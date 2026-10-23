@@ -30,17 +30,39 @@ const GAMES = [
 ];
 const gameById = (id) => GAMES.find((g) => g.id === Number(id));
 
-const MOCK_REVIEWS = [
-  { user: "Alex_Arcade", gameId: 22, stars: 5, daysAgo: 1, text: "Gastei muita ficha nesse. Cada lutador tem um estilo próprio e dominar os golpes é viciante." },
-  { user: "RetroQueen", gameId: 23, stars: 4, daysAgo: 1, text: "Simples e perfeito. Decorar o caminho dos fantasmas é metade da graça." },
-  { user: "PixelMaster", gameId: 24, stars: 5, daysAgo: 2, text: "Trilha sonora e história sem enrolação. Um dos melhores RPGs de todos os tempos." },
-  { user: "Alex_Arcade", gameId: 1, stars: 5, daysAgo: 3, text: "Atmosfera incrível e chefes memoráveis. Vale cada morte." },
-  { user: "RetroQueen", gameId: 12, stars: 5, daysAgo: 4, text: "Um mundo vivo e uma história que fica na cabeça por dias." },
-  { user: "PixelMaster", gameId: 25, stars: 3, daysAgo: 5, text: "Histórico e importante, mas hoje funciona melhor em partidas curtas." },
-  { user: "RetroQueen", gameId: 8, stars: 4, daysAgo: 6, text: "Difícil, bonito e cheio de segredos. Exige paciência." },
-  { user: "Alex_Arcade", gameId: 21, stars: 4, daysAgo: 8, text: "Criativo em cada reino. Dá vontade de explorar tudo." }
+const CATEGORIES = [
+  { label: "Todos", genres: null },
+  { label: "Ação/Aventura", genres: ["Ação", "Aventura"] },
+  { label: "RPG", genres: ["RPG", "JRPG"] },
+  { label: "Luta", genres: ["Luta"] },
+  { label: "Plataforma", genres: ["Plataforma"] },
+  { label: "Metroidvania", genres: ["Metroidvania"] },
+  { label: "Arcade", genres: ["Arcade"] },
+  { label: "Outros", genres: ["Simulação", "Roguelike", "Puzzle", "Terror", "Sandbox"] }
 ];
 
+const MOCK_PROFILES = {
+  Alex_Arcade:  { avatar: "👾", bio: "Fliperama raiz e RPG de fim de semana.", followers: 128, following: 54,  followsBack: true,  favorites: [22, 1, 8, 24] },
+  PixelQueen:   { avatar: "👑", bio: "Plataforma, pixel art e trilhas sonoras.", followers: 342, following: 77,  followsBack: false, favorites: [2, 20, 21, 5] },
+  RetroGamer99: { avatar: "🕹️", bio: "Colecionador de clássicos dos anos 80 e 90.", followers: 89, following: 120, followsBack: true,  favorites: [23, 25, 26, 22] }
+};
+
+const MOCK_LISTS = [
+  { user: "Alex_Arcade",  name: "Fliperama essencial", games: [22, 23, 25, 26] },
+  { user: "PixelQueen",   name: "Plataformas que amo", games: [2, 20, 21, 1] },
+  { user: "RetroGamer99", name: "Anos 80 em fichas",   games: [23, 25, 26] }
+];
+
+const MOCK_REVIEWS = [
+  { user: "Alex_Arcade",  gameId: 22, stars: 5, daysAgo: 1, likes: 14, text: "Gastei muita ficha nesse. Cada lutador tem um estilo próprio e dominar os golpes é viciante.", comments: [{ user: "PixelQueen", text: "Hadouken eterno! Melhor jogo de luta." }] },
+  { user: "PixelQueen",   gameId: 23, stars: 4, daysAgo: 1, likes: 9,  text: "Simples e perfeito. Decorar o caminho dos fantasmas é metade da graça." },
+  { user: "RetroGamer99", gameId: 24, stars: 5, daysAgo: 2, likes: 21, text: "Trilha sonora e história sem enrolação. Um dos melhores RPGs de todos os tempos.", comments: [{ user: "Alex_Arcade", text: "A trilha sonora é de outro mundo." }] },
+  { user: "Alex_Arcade",  gameId: 1,  stars: 5, daysAgo: 3, likes: 11, text: "Atmosfera incrível e chefes memoráveis. Vale cada morte." },
+  { user: "PixelQueen",   gameId: 12, stars: 5, daysAgo: 4, likes: 17, text: "Um mundo vivo e uma história que fica na cabeça por dias.", comments: [{ user: "RetroGamer99", text: "Concordo, o final me marcou." }] },
+  { user: "RetroGamer99", gameId: 25, stars: 3, daysAgo: 5, likes: 4,  text: "Histórico e importante, mas hoje funciona melhor em partidas curtas." },
+  { user: "PixelQueen",   gameId: 8,  stars: 4, daysAgo: 6, likes: 12, text: "Difícil, bonito e cheio de segredos. Exige paciência." },
+  { user: "Alex_Arcade",  gameId: 21, stars: 4, daysAgo: 8, likes: 7,  text: "Criativo em cada reino. Dá vontade de explorar tudo." }
+];
 const NEWS = [
   { tag: "Lançamento", title: "Novo RPG de mundo aberto ganha data", text: "Exemplo de notícia: substitua pelo texto real." },
   { tag: "Trailer", title: "Estúdio indie revela trailer de plataforma 2D", text: "Exemplo de notícia: substitua pelo texto real." },

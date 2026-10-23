@@ -11,7 +11,12 @@
 
   <main class="layout">
     <section>
-      <h1 class="section-title">Jogos populares</h1>
+      <!-- Barra compacta: título | pílulas dos filtros ativos | seletor de gênero -->
+      <div class="catalog-head">
+        <h1 class="section-title">Jogos populares</h1>
+        <div id="pills" class="pills"></div>
+        <select id="genre" aria-label="Filtrar por gênero"></select>
+      </div>
       <div id="games" class="posters"></div>
     </section>
     <aside>
@@ -20,6 +25,7 @@
     </aside>
   </main>
 
+  <!-- Modal do jogo -->
   <dialog id="dlg">
     <form id="review-form" class="dlg-body">
       <div id="dlg-poster" class="dlg-poster"></div>
@@ -39,13 +45,17 @@
 
         <textarea id="comment" rows="4" maxlength="400" placeholder="Escreva sua review (opcional)..."></textarea>
         <p id="dlg-msg" class="msg" role="alert"></p>
-        <button type="submit">Salvar Review</button>
+        <div class="row">
+          <button type="submit">Salvar Review</button>
+          <button type="button" class="ghost" id="dlg-watch">+ Watchlist</button>
+        </div>
       </div>
     </form>
   </dialog>
 
   <script src="js/data.js"></script>
   <script src="js/store.js"></script>
+  <script src="js/watchlist.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/index.js"></script>
 </body>
