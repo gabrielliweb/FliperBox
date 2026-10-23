@@ -2,7 +2,7 @@
 
 Rede social de reviews de jogos, inspirada no Letterboxd e no clima dos fliperamas. Feita com **HTML5, CSS3 e JavaScript puro**, sem frameworks e sem backend. Projeto acadêmico de Sistemas para Internet.
 
-🔗 **Site no ar:** https://SEU-SITE.onrender.com *(troque pelo link do Render)*
+🔗 **Site no ar:** https://fliperbox.onrender.com
 
 ## Funcionalidades
 
