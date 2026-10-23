@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FliperBox – Entrar</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="nav"></header>
+  <main class="narrow">
+    <h1 class="section-title">Entrar ou criar conta</h1>
+    <p id="msg" class="msg" role="alert"></p>
+    <form id="auth-form">
+      <label>E-mail <input id="user" type="email" required autocomplete="email" placeholder="voce@email.com"></label>
+      <label>Senha <input id="pass" type="password" required minlength="4" autocomplete="current-password"></label>
+      <div class="row">
+        <button type="submit" id="btn-login">Entrar</button>
+        <button type="button" class="ghost" id="btn-register">Criar conta</button>
+      </div>
+    </form>
+  </main>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

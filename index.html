@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FliperBox – Jogos</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="nav"></header>
+
+  <main class="layout">
+    <section>
+      <h1 class="section-title">Jogos populares</h1>
+      <div id="games" class="posters"></div>
+    </section>
+    <aside>
+      <h2 class="section-title">Notícias</h2>
+      <div id="news"></div>
+    </aside>
+  </main>
+
+  <dialog id="dlg">
+    <form id="review-form" class="dlg-body">
+      <div id="dlg-poster" class="dlg-poster"></div>
+      <div>
+        <button type="button" class="close" id="dlg-close" aria-label="Fechar">×</button>
+        <h2 id="dlg-title"></h2>
+        <p id="dlg-meta" class="muted"></p>
+        <p id="dlg-synopsis"></p>
+
+        <div class="star-pick" role="group" aria-label="Nota de 1 a 5 estrelas">
+          <button type="button" data-star="1" aria-label="1 estrela">★</button>
+          <button type="button" data-star="2" aria-label="2 estrelas">★</button>
+          <button type="button" data-star="3" aria-label="3 estrelas">★</button>
+          <button type="button" data-star="4" aria-label="4 estrelas">★</button>
+          <button type="button" data-star="5" aria-label="5 estrelas">★</button>
+        </div>
+
+        <textarea id="comment" rows="4" maxlength="400" placeholder="Escreva sua review (opcional)..."></textarea>
+        <p id="dlg-msg" class="msg" role="alert"></p>
+        <button type="submit">Salvar Review</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

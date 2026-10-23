@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FliperBox – Listas</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header id="nav"></header>
+<main class="wide">
+    <h1 class="section-title">Minhas listas</h1>
+    <form id="list-form" class="row">
+    <input id="list-name" placeholder="Nome da nova lista" required maxlength="40" aria-label="Nome da nova lista">
+    <button type="submit">Criar lista</button>
+    </form>
+    <div id="lists" class="lists-grid"></div>
+</main>
+<script src="js/data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/lists.js"></script>
+</body>
+</html>
