@@ -8,21 +8,41 @@
 </head>
 <body>
   <header id="nav"></header>
-  <main class="wide">
-    <h1 id="who"></h1>
 
-    <h2 class="section-title">Top 4 favoritos</h2>
-    <div id="top4" class="posters four"></div>
-    <details>
-      <summary>Escolher favoritos</summary>
-      <div id="picker" class="posters small"></div>
-    </details>
+  <main>
+    <section id="head" class="p-head"></section>
 
-    <h2 class="section-title">Minhas reviews</h2>
-    <div id="my-reviews"></div>
+    <nav id="subtabs" class="subtabs" aria-label="Seções do perfil"></nav>
+
+    <div class="p-layout">
+      <div id="panel"></div>
+      <aside id="side"></aside>
+    </div>
   </main>
+
+  <dialog id="edit-dlg">
+    <form id="edit-form" class="edit-body">
+      <button type="button" class="close" id="edit-close" aria-label="Fechar">×</button>
+      <h2>Editar perfil</h2>
+      <label>Bio
+        <textarea id="e-bio" rows="3" maxlength="160" placeholder="Conte um pouco sobre você"></textarea>
+      </label>
+      <label>Localização
+        <input id="e-loc" maxlength="40" placeholder="Recife, Brasil">
+      </label>
+      <p class="muted">Foto de perfil</p>
+      <div id="presets" class="presets"></div>
+      <label>ou URL de uma imagem
+        <input id="e-url" type="url" placeholder="https://...">
+      </label>
+      <p id="e-msg" class="msg" role="alert"></p>
+      <button type="submit">Salvar</button>
+    </form>
+  </dialog>
+
   <script src="js/data.js"></script>
   <script src="js/store.js"></script>
+  <script src="js/watchlist.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/profile.js"></script>
 </body>
