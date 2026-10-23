@@ -1,14 +1,13 @@
-function esc(text) { // escapa HTML e aspas (seguro também dentro de atributos)
+function esc(text) {
   const d = document.createElement("div");
   d.textContent = text;
   return d.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 const stars = (n) => "★".repeat(n) + "☆".repeat(5 - n);
-const nameOf = (user) => user.split("@")[0]; // mostramos só a parte antes do @
+const nameOf = (user) => user.split("@")[0];
 const byDate = (a, b) => new Date(b.date) - new Date(a.date);
-const openComments = new Set(); // reviews com a área de comentários aberta
+const openComments = new Set();
 
-// Avatar: emoji pré-definido ou imagem por URL
 function avatarInner(user) {
   const a = Profiles.get(user).avatar || "🕹️";
   return /^https?:\/\//.test(a)
@@ -16,7 +15,6 @@ function avatarInner(user) {
     : `<span>${esc(a)}</span>`;
 }
 
-// Pôster 2:3; se a imagem falhar, mostra um bloco com o título
 function poster(game) {
   return `<img class="poster" src="${game.cover}" alt="Pôster de ${esc(game.title)}" data-title="${esc(game.title)}" loading="lazy" onerror="posterFallback(this)">`;
 }
@@ -27,7 +25,6 @@ function posterFallback(img) {
   img.replaceWith(d);
 }
 
-// Mosaico de até 4 capas levemente sobrepostas (a primeira fica na frente)
 function mosaic(gameIds) {
   const games = gameIds.map(gameById).filter(Boolean).slice(0, 4);
   if (!games.length) return '<div class="mosaic"><div class="slot-empty mini">vazia</div></div>';
@@ -56,7 +53,6 @@ function renderNav() {
       </div>
     </div>`;
 
-  // Busca: preenchida pela URL (?q=) e, fora do catálogo, leva até ele ao apertar Enter
   const input = document.getElementById("search");
   input.value = new URLSearchParams(location.search).get("q") || "";
   document.getElementById("search-form").addEventListener("submit", (e) => {
@@ -68,7 +64,6 @@ function renderNav() {
   if (out) out.addEventListener("click", () => { Auth.logout(); location.href = "index.html"; });
 }
 
-// Card de review (feed, perfil e página de outros usuários) com curtir e comentar
 function feedItem(r, canDelete) {
   const me = Auth.current();
   const likes = r.likes || [];
@@ -112,7 +107,6 @@ function renderNews(el) {
     </article>`).join("");
 }
 
-// Cabeçalho de perfil (profile.html e user.html): avatar, nome, bio e contadores
 function statsHead(user, viewer, reviewCount) {
   const c = Follows.counts(user, viewer);
   return `<div class="avatar big">${avatarInner(user)}</div>
@@ -127,7 +121,6 @@ function statsHead(user, viewer, reviewCount) {
     </div>`;
 }
 
-// Curtir, comentar e excluir: funciona em qualquer lista de reviews
 function bindSocial(container, refresh) {
   container.addEventListener("click", (e) => {
     const b = e.target.closest("button");
