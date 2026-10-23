@@ -7,7 +7,6 @@ const DB = {
   set(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
 };
 
-// Senha nunca é guardada em texto puro (SHA-256). Continua sendo autenticação SIMULADA: não use em produção.
 async function sha256(text) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
   return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
@@ -41,7 +40,7 @@ const Reviews = {
     });
     DB.set("gb_reviews", list);
   },
-  remove(id, user) { // só o autor apaga
+  remove(id, user) {
     DB.set("gb_reviews", Reviews.all().filter((r) => !(r.id === id && r.user === user)));
   },
   _edit(id, fn) {
@@ -49,7 +48,7 @@ const Reviews = {
     const r = all.find((x) => x.id === id);
     if (r) { fn(r); DB.set("gb_reviews", all); }
   },
-  like(id, user) { // curtir / descurtir
+  like(id, user) {
     Reviews._edit(id, (r) => {
       const l = r.likes || [];
       r.likes = l.includes(user) ? l.filter((u) => u !== user) : [...l, user];
@@ -62,7 +61,6 @@ const Reviews = {
   }
 };
 
-// Foto (emoji ou URL) e bio de cada usuário
 const Profiles = {
   all: () => DB.get("gb_profiles", {}),
   get: (user) => Profiles.all()[user] || { avatar: "🕹️", bio: "" },
@@ -80,8 +78,6 @@ const Follows = {
     const l = Follows.list(me);
     DB.set("gb_follows_" + me, l.includes(other) ? l.filter((x) => x !== other) : [...l, other]);
   },
-  // Contadores simulados: perfis fictícios têm números fixos; o seu "seguidores"
-  // conta os perfis que você segue e que seguem de volta.
   counts(user, viewer) {
     const p = MOCK_PROFILES[user];
     if (p) return { followers: p.followers + (viewer && Follows.is(viewer, user) ? 1 : 0), following: p.following };
@@ -92,7 +88,7 @@ const Follows = {
 
 const Favorites = {
   get: (user) => DB.get("gb_fav_" + user, []),
-  toggle(user, gameId) { // máximo de 4
+  toggle(user, gameId) {
     let favs = Favorites.get(user);
     if (favs.includes(gameId)) favs = favs.filter((id) => id !== gameId);
     else if (favs.length < 4) favs.push(gameId);
@@ -125,7 +121,6 @@ const Lists = {
   remove(listId) { Lists._save(DB.get("gb_lists", []).filter((l) => l.id !== listId)); }
 };
 
-// Cria os dados simulados no LocalStorage uma única vez
 function seedData() {
   if (DB.get("gb_seeded_v3", false)) return;
   DB.set("gb_profiles", { ...Profiles.all(), ...MOCK_PROFILES });
