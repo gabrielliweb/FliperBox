@@ -119,6 +119,6 @@ Se uma imagem não carregar, o card mostra o título do jogo no lugar.
 
 Capas: CDN pública da Steam e imagens locais em `img/`, usadas apenas para fins acadêmicos. Cite aqui a origem de cada capa que você adicionar.
 
-## Autoria
+## Grupo 
 
-Ana Gabrielli – Sistemas para Internet, Unicap
+Ana Gabrielli, Ana Júlia e Luana de Castro – Sistemas para Internet, Unicap
